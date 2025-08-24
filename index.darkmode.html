@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>ROBO AI — Robotics × AI</title>
+    <meta name="description" content="ROBO AI — 로보틱스와 인공지능을 결합한 제품을 빠르고 안전하게 구축하세요."/>
+
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="assets/svg/logo-roboai-pro.svg"/>
+
+    <!-- CSS 연결: 반드시 프로젝트 구조(assets/css/style.css)에 맞춤 -->
+    
+    <script>
+      (function(){
+        try {
+          var m = document.cookie.match(/(?:^|; )roboai_theme=([^;]+)/);
+          var pref = m ? decodeURIComponent(m[1]) : null;
+          var theme = pref === 'system' || !pref
+            ? (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : pref;
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch(e){}
+      })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css"/>
+  
+  <!-- CTA External Link Clickability Fix -->
+  <style id="cta-link-fix">
+    /* Prevent overlay pseudo-element from intercepting clicks */
+    .pressable::after { pointer-events: none !important; }
+
+    /* Ensure buttons sit above any visual overlays */
+    .price-card { position: relative; }
+    .price-card .btn { position: relative; z-index: 2; }
+
+    /* Optional: emphasize hover on buttons */
+    .price-card .btn:hover { transform: translateY(-1px); }
+  </style>
+
+</head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+    <!-- 헤더 -->
+    <header class="site-header" id="top">
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="ROBO AI 홈으로 이동">
+          <img class="brand__logo" src="assets/svg/logo-roboai-pro.svg" alt="" width="28" height="28"/>
+          <span class="brand__text">ROBO AI</span>
+        </a>
+
+        <nav class="nav" aria-label="상단 메뉴">
+          <ul class="nav__list" role="list">
+            <li class="nav__item"><a href="#hero" class="nav__link" aria-current="page"><span>홈</span></a></li>
+            <li class="nav__item has-flyout">
+              <a href="#main-split" class="nav__link"><span>제품</span></a>
+              <div class="menu-flyout" role="menu" aria-label="제품 하위 메뉴">
+                <a role="menuitem" class="menu-flyout__link" href="#prompt">프롬프트</a>
+                <a role="menuitem" class="menu-flyout__link" href="#updates">업데이트</a>
+                <a role="menuitem" class="menu-flyout__link" href="#pricing">가격</a>
+              </div>
+            </li>
+            <li class="nav__item"><a href="#scrolly" class="nav__link"><span>하이라이트</span></a></li>
+            <li class="nav__item"><a href="#updates" class="nav__link"><span>업데이트</span></a></li>
+            <li class="nav__item"><a href="#pricing" class="nav__link"><span>가격</span></a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <button id="themeToggle" class="btn btn--ghost" aria-pressed="false" aria-label="테마 전환">🌓</button>
+          <button id="loginBtn" class="btn btn--primary">로그인</button>
+          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="모바일 메뉴 열기">
+            <span class="nav__bar"></span><span class="nav__bar"></span><span class="nav__bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobileNav" class="nav-mobile" hidden>
+        <ul class="nav-mobile__list" role="list">
+          <li><a href="#hero" class="nav-mobile__link">홈</a></li>
+          <li><a href="#scrolly" class="nav-mobile__link">하이라이트</a></li>
+          <li><a href="#main-split" class="nav-mobile__link">제품</a></li>
+          <li><a href="#updates" class="nav-mobile__link">업데이트</a></li>
+          <li><a href="#pricing" class="nav-mobile__link">가격</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 좌/우 고정 배너 -->
+    <aside class="side-rail side-rail--left" aria-label="좌측 배너">
+      <a href="#prompt" class="side-rail__pill">프롬프트</a>
+      <a href="#updates" class="side-rail__pill">업데이트</a>
+      <a href="#pricing" class="side-rail__pill">가격</a>
+    </aside>
+    <aside class="side-rail side-rail--right" aria-label="우측 배너">
+      <a class="side-thumb" href="https://openai.com/ko-KR/index/introducing-gpt-oss/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/svg/ai-chip-pro.svg" alt="GPT-OSS 소개"/>
+        <span>Introducing GPT-OSS</span>
+      </a>
+      <a class="side-thumb" href="https://openai.com/ko-KR/index/chatgpt-study-mode/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/svg/dashboard-pro.svg" alt="Study Mode"/>
+        <span>ChatGPT Study Mode</span>
+      </a>
+      <a class="side-thumb" href="https://openai.com/ko-KR/index/introducing-chatgpt-agent/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/svg/security-shield-pro.svg" alt="ChatGPT Agent"/>
+        <span>Introducing ChatGPT Agent</span>
+      </a>
+    </aside>
+
+    <!-- 히어로 -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <h1 id="hero-title" class="hero__title">Build with ROBO AI</h1>
+        <p class="hero__lead">화이트 배경 라이트 모드 — 밝고 프로페셔널한 기본 테마.</p>
+
+        <form id="heroPrompt" class="hero-prompt" autocomplete="off">
+          <input id="heroPromptInput" class="input hero-prompt__input" placeholder="질문을 입력하세요 (Enter 전송)"/>
+          <button class="btn btn--primary hero-prompt__btn" type="submit">전송</button>
+        </form>
+
+        <div class="hero__grid" role="list">
+          <a class="card pressable tilt" role="listitem" tabindex="0" data-tilt-depth="14"
+             href="https://openai.com/ko-KR/index/introducing-gpt-oss/" target="_blank" rel="noopener noreferrer">
+            <img class="card__img" src="assets/svg/robot-lab-pro.svg" alt="로봇 하드웨어와 AI 통합"/>
+            <div class="card__body">
+              <h3 class="card__title">로보틱스 통합</h3>
+              <p class="card__text">센서·액추에이터·에지 AI를 하나의 파이프라인으로.</p>
+            </div>
+          </a>
+
+          <a class="card pressable tilt" role="listitem" tabindex="0" data-tilt-depth="12"
+             href="https://openai.com/ko-KR/index/chatgpt-study-mode/" target="_blank" rel="noopener noreferrer">
+            <img class="card__img" src="assets/svg/ai-chip-pro.svg" alt="AI 모델 운영"/>
+            <div class="card__body">
+              <h3 class="card__title">AI 운영</h3>
+              <p class="card__text">프롬프트·추론·모니터링까지 MLOps 기반으로.</p>
+            </div>
+          </a>
+
+          <a class="card pressable tilt" role="listitem" tabindex="0" data-tilt-depth="10"
+             href="https://openai.com/ko-KR/index/introducing-chatgpt-agent/" target="_blank" rel="noopener noreferrer">
+            <img class="card__img" src="assets/svg/security-shield-pro.svg" alt="보안과 컴플라이언스"/>
+            <div class="card__body">
+              <h3 class="card__title">보안 & 안전</h3>
+              <p class="card__text">권한·감사·콘텐츠필터로 안전한 제품 운영.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="hero__down">
+          <a href="#scrolly" class="btn btn--ghost" aria-label="하이라이트 섹션으로 이동">아래로 이동 ⤵</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하이라이트 -->
+    <section id="scrolly" class="scrolly container" aria-labelledby="scrolly-title">
+      <h2 id="scrolly-title" class="section__title">하이라이트(중앙 그림 + 우측 레일)</h2>
+      <div class="scrolly__center">
+        <figure class="scrolly__figure tilt" data-tilt-depth="8">
+          <img src="assets/svg/hero-roboai-pro.svg" alt="ROBOT × AI" class="scrolly__img" loading="lazy"/>
+          <figcaption class="scrolly__caption">ROBOT × AI — 제품에 쉽게 접목하세요.</figcaption>
+        </figure>
+      </div>
+      <aside class="scrolly__rail" id="scrollyRail" aria-label="하이라이트 링크 목록">
+        <a class="scrolly__thumb pressable tilt" href="https://openai.com/ko-KR/index/introducing-gpt-oss/" target="_blank" rel="noopener noreferrer" data-tilt-depth="6">
+          <img src="assets/svg/cloud-edge-pro.svg" alt="" loading="lazy"/>
+          <span class="scrolly__thumb-title">Introducing GPT-OSS</span>
+        </a>
+        <a class="scrolly__thumb pressable tilt" href="https://openai.com/ko-KR/index/chatgpt-study-mode/" target="_blank" rel="noopener noreferrer" data-tilt-depth="6">
+          <img src="assets/svg/dashboard-pro.svg" alt="" loading="lazy"/>
+          <span class="scrolly__thumb-title">ChatGPT Study Mode</span>
+        </a>
+        <a class="scrolly__thumb pressable tilt" href="https://openai.com/ko-KR/index/introducing-chatgpt-agent/" target="_blank" rel="noopener noreferrer" data-tilt-depth="6">
+          <img src="assets/svg/cloud-edge-pro.svg" alt="" loading="lazy"/>
+          <span class="scrolly__thumb-title">Introducing ChatGPT Agent</span>
+        </a>
+      </aside>
+    </section>
+
+    <!-- 본문 -->
+    <main id="main">
+      <section id="main-split" class="main-split container" aria-labelledby="toc-title">
+        <aside class="toc" aria-labelledby="toc-title">
+          <h2 id="toc-title" class="toc__title">목차</h2>
+          <ol class="toc__list">
+            <li><a href="#prompt">프롬프트</a></li>
+            <li><a href="#updates">업데이트</a></li>
+            <li><a href="#pricing">가격</a></li>
+          </ol>
+        </aside>
+
+        <div class="content">
+          <section id="prompt" class="prompt" aria-labelledby="prompt-title">
+            <h2 id="prompt-title" class="section__title">프롬프트</h2>
+            <p class="section__lead">Demo(오프라인) 또는 Backend(/api/free-gpt)로 전송이 가능합니다.</p>
+
+            <button popovertarget="help-pop" class="btn sm btn--ghost" style="width:max-content">도움말</button>
+            <div id="help-pop" popover>
+              <strong>프롬프트 도움말</strong><br/>
+              엔터(Enter)로 전송, Shift+Enter로 줄바꿈. 상단 히어로 입력창도 본문과 연동됩니다.
+            </div>
+
+            <div class="prompt__row">
+              <label class="prompt__label" for="providerSelect">모드</label>
+              <select id="providerSelect" class="input">
+                <option value="demo" selected>데모(오프라인)</option>
+                <option value="backend">백엔드(/api/free-gpt)</option>
+              </select>
+              <span id="providerStatus" class="prompt__status" aria-live="polite">대기</span>
+            </div>
+
+            <div class="prompt__row">
+              <label class="prompt__label" for="promptInput">질문</label>
+              <textarea id="promptInput" class="input" rows="3" placeholder="예: MySQL 인덱스 설계 팁 알려줘"></textarea>
+            </div>
+
+            <div class="prompt__actions">
+              <div class="suggests" aria-label="예시 질문">
+                <button class="btn sm suggest" data-example="MySQL 슬로우 쿼리 튜닝 방법?">예시: MySQL 튜닝</button>
+                <button class="btn sm suggest" data-example="주니어 백엔드 면접 질문 10개">예시: 면접 10문</button>
+                <button class="btn sm suggest" data-example="3일 제주 여행 코스">예시: 여행 3일</button>
+              </div>
+              <div class="prompt__btns">
+                <button id="promptSend" class="btn btn--primary">전송</button>
+                <button id="clearOutput" class="btn btn--ghost">지우기</button>
+              </div>
+            </div>
+
+            <pre id="promptOutput" class="output" aria-live="polite"></pre>
+          </section>
+
+          <section id="updates" class="updates" aria-labelledby="updates-title">
+            <h2 id="updates-title" class="section__title">업데이트</h2>
+            <ul class="updates__list" role="list">
+              <li class="updates__item">v2.0 — 프로급 일러스트로 전면 교체 + 버튼 외부 링크 보장</li>
+              <li class="updates__item">v1.4 — 코드 충돌 해결 + 링크 연결 + SVG 추가</li>
+              <li class="updates__item">v1.3 — 라이트 기본 + 전역 좌/우 배너 + 히어로 프롬프트</li>
+            </ul>
+          </section>
+
+          <section id="pricing" class="pricing" aria-labelledby="pricing-title">
+            <h2 id="pricing-title" class="section__title">가격</h2>
+            <div class="pricing__grid">
+              <article class="price-card pressable tilt" data-tilt-depth="8">
+                <img src="assets/svg/ai-chip-pro.svg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;border-radius:10px"/>
+                <h3 class="price-card__title">Starter</h3>
+                <p class="price-card__price">$0</p>
+                <ul class="price-card__features" role="list">
+                  <li>개인 프로젝트</li>
+                  <li>커뮤니티 지원</li>
+                </ul>
+                <a class="btn btn--primary" role="button" target="_blank" rel="noopener noreferrer"
+                   href="https://openai.com/ko-KR/index/introducing-gpt-oss/">시작하기</a>
+              </article>
+
+              <article class="price-card pressable tilt" data-tilt-depth="10">
+                <img src="assets/svg/dashboard-pro.svg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;border-radius:10px"/>
+                <h3 class="price-card__title">Pro</h3>
+                <p class="price-card__price">$29</p>
+                <ul class="price-card__features" role="list">
+                  <li>팀 협업</li>
+                  <li>이메일 지원</li>
+                </ul>
+                <a class="btn btn--primary" role="button" target="_blank" rel="noopener noreferrer"
+                   href="https://openai.com/ko-KR/index/chatgpt-study-mode/">구매</a>
+              </article>
+
+              <article class="price-card pressable tilt" data-tilt-depth="12">
+                <img src="assets/svg/security-shield-pro.svg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;border-radius:10px"/>
+                <h3 class="price-card__title">Enterprise</h3>
+                <p class="price-card__price">문의</p>
+                <ul class="price-card__features" role="list">
+                  <li>SLA & SSO</li>
+                  <li>온프레미스 옵션</li>
+                </ul>
+                <a class="btn btn--primary" role="button" target="_blank" rel="noopener noreferrer"
+                   href="https://openai.com/ko-KR/index/introducing-chatgpt-agent/">문의하기</a>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top">
+            <img class="brand__logo" src="assets/svg/logo-roboai-pro.svg" alt="" width="28" height="28"/>
+            <span class="brand__text">ROBO AI</span>
+          </a>
+          <p class="footer__text">© <span id="year"></span> ROBO AI. All rights reserved.</p>
+        </div>
+        <nav class="footer__nav" aria-label="푸터">
+          <div>
+            <h3 class="footer__title">Product</h3>
+            <ul role="list">
+              <li><a href="#hero">홈</a></li>
+              <li><a href="#pricing">가격</a></li>
+              <li><a href="#updates">업데이트</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer__title">Company</h3>
+            <ul role="list">
+              <li><a href="https://openai.com/ko-KR/about" target="_blank" rel="noopener noreferrer">About</a></li>
+              <li><a href="https://openai.com/ko-KR/careers" target="_blank" rel="noopener noreferrer">Careers</a></li>
+              <li><a href="https://openai.com/ko-KR/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer__title">Developers</h3>
+            <ul role="list">
+              <li><a href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer">Docs</a></li>
+              <li><a href="https://status.openai.com/" target="_blank" rel="noopener noreferrer">Status</a></li>
+              <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- 로그인 모달 / 유저 배지 / 쿠키 배너 -->
+    <dialog id="loginDialog" class="login">
+      <form id="loginForm" method="dialog" class="login__form" novalidate>
+        <div class="login__header">
+          <h2 class="login__title">로그인</h2>
+          <button id="loginClose" class="btn btn--ghost" type="button" aria-label="닫기">✕</button>
+        </div>
+        <label class="input__group">
+          <span class="input__label">이메일</span>
+          <input id="email" class="input" name="email" type="email" autocomplete="username" required placeholder="demo@ai.dev"/>
+        </label>
+        <label class="input__group">
+          <span class="input__label">비밀번호</span>
+          <input id="password" class="input" name="password" type="password" autocomplete="current-password" required placeholder="demo1234!"/>
+        </label>
+        <label class="check">
+          <input id="remember" type="checkbox"/> 로그인 유지(표시명 쿠키 저장)
+        </label>
+        <p id="loginError" class="login__error" role="alert"></p>
+        <div class="login__actions">
+          <button class="btn btn--primary" type="submit">로그인</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="userBadge" class="user-badge" aria-live="polite" hidden></div>
+
+    <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="쿠키 사용 안내" hidden>
+      <div class="cookie-banner__inner">
+        <p class="cookie-banner__text">
+          이 사이트는 기본 동작을 위해 필수 쿠키를 사용합니다. 선택 쿠키(분석/개인화)는 동의하신 경우에만 저장됩니다.
+          <a href="#!" class="cookie-banner__link">자세히</a>
+        </p>
+        <div class="cookie-banner__actions">
+          <button id="cookieReject" class="btn btn--ghost sm" type="button">거부</button>
+          <button id="cookieAccept" class="btn btn--primary sm" type="button">동의</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="cursorFX" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:0;"></canvas>
+
+    <!-- JS 연결: 반드시 프로젝트 구조(assets/js/main.js)에 맞춤 -->
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

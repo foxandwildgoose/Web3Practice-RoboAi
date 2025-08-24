@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="96" viewBox="0 0 320 96">
+
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d28d9"/>
+      <stop offset=".55" stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#94a3b8" flood-opacity=".25"/></filter>
+  </defs>
+
+<g transform="translate(8,8)" filter="url(#sh)">
+  <rect x="0" y="12" width="64" height="64" rx="16" fill="url(#g)"/>
+  <rect x="28" y="-6" width="8" height="20" rx="4" fill="url(#g)"/>
+  <circle cx="32" cy="-10" r="6" fill="#06b6d4"/>
+  <rect x="14" y="36" width="36" height="22" rx="10" fill="#0b1220" opacity=".92"/>
+  <circle cx="26" cy="47" r="7" fill="#6d28d9"/><circle cx="40" cy="47" r="7" fill="#0284c7"/>
+</g>
+<g transform="translate(92,24)">
+  <text x="0" y="26" font-family="system-ui, 'Noto Sans KR', sans-serif" font-weight="900" font-size="28" fill="#0f172a">ROBO</text>
+  <text x="0" y="56" font-family="system-ui, 'Noto Sans KR', sans-serif" font-weight="900" font-size="28" fill="url(#g)">AI</text>
+</g>
+</svg>

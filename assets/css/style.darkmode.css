@@ -1,0 +1,333 @@
+/* ==========================================================================
+   ROBO AI — Brand & Psychology-Driven UI System (assets/css/style.css)
+   --------------------------------------------------------------------------
+   ✦ 목적: 최신 디자인 경향 + 기업 CI 반영 + 심리학적 색채 조화 + 접근성
+   ✦ 적용: <html data-theme="light|dark" data-brand="ocean|violet|emerald|amber" data-contrast="high">
+   ✦ 교체: 기존 style.css 를 본 파일로 대체 (경로 동일)
+   ✦ 팁:
+     - 회사 CI 색이 정해져 있다면 아래 "브랜드 팔레트" 섹션에서 --brand-* 값만 수정하면 전체 UI가 재색상 됩니다.
+     - 대비 강화가 필요하면 <html data-contrast="high"> 를 추가하세요.
+   ========================================================================== */
+
+/* Reset & Base */
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+img,svg{display:block;max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+a{text-decoration:none;color:inherit}
+ul,ol{margin:0;padding:0}h1,h2,h3,h4,h5,h6,p{margin:0}
+
+/* --------------------------------------------------------------------------
+   디자인 토큰 (기본)
+   - 심리학적으로 신뢰·안정성(블루/티얼), 창의성(바이올렛), 생동감(앰버) 등을 고려한 팔레트
+   - 브랜드 교체: html[data-brand="..."] 로 스위칭
+   -------------------------------------------------------------------------- */
+:root{
+  /* Core (Light) */
+  --bg:#ffffff; --fg:#0b1220; --muted:#4b5563; --surface:#f7f9fc;
+  --border:#e2e8f0; --shadow:rgba(0,0,0,.08);
+
+  /* Brand (default: ocean = 신뢰/안정) */
+  --primary:#2563eb;      /* Blue-600 */
+  --secondary:#0ea5e9;    /* Sky-500 */
+  --accent:#06b6d4;       /* Cyan-500 */
+
+  /* Feedback */
+  --success:#16a34a; --warning:#d97706; --danger:#ef4444;
+
+  /* Radii */
+  --r-sm:8px; --r-md:10px; --r-lg:12px; --r-xl:16px; --r-2xl:20px;
+
+  /* Spacing scale (8pt 기반) */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-7:32px; --sp-8:40px;
+
+  /* Typography (유동형) */
+  --fs-xs:clamp(.78rem,.72rem + .2vw,.86rem);
+  --fs-sm:clamp(.9rem,.86rem + .2vw,.98rem);
+  --fs-md:clamp(1rem,.96rem + .25vw,1.08rem);
+  --fs-lg:clamp(1.1rem,1.02rem + .6vw,1.28rem);
+  --fs-xl:clamp(1.35rem,1.1rem + 1.2vw,1.8rem);
+  --fs-2xl:clamp(1.8rem,1.4rem + 2.2vw,2.6rem);
+
+  /* Gradients */
+  --grad-brand:linear-gradient(135deg,var(--primary),var(--secondary));
+  --grad-soft:linear-gradient(180deg, color-mix(in oklab,var(--surface),transparent 10%), transparent);
+
+  /* Focus outline */
+  --focus:color-mix(in oklab,var(--secondary),transparent 30%);
+
+  color-scheme: light dark;
+}
+
+/* Brand Variants (기업 CI에 맞게 선택) */
+html[data-brand="violet"]{
+  --primary:#7c3aed; --secondary:#a855f7; --accent:#22d3ee; /* 창의/영감 */
+}
+html[data-brand="emerald"]{
+  --primary:#059669; --secondary:#10b981; --accent:#06b6d4; /* 신뢰/친환경 */
+}
+html[data-brand="amber"]{
+  --primary:#d97706; --secondary:#f59e0b; --accent:#06b6d4; /* 에너지/집중 */
+}
+
+/* Contrast High (가독성/접근성 강화) */
+html[data-contrast="high"]{
+  --border:#cbd5e1;
+  --shadow:rgba(0,0,0,.16);
+}
+
+/* Dark Theme */
+html[data-theme="dark"]{
+  --bg:#0b1220; --fg:#e5e7eb; --muted:#a6adbb; --surface:#111827;
+  --border:#22314f; --shadow:rgba(0,0,0,.35);
+
+  /* 어두운 배경에서 살짝 채도/밝기 조정 */
+  --primary:color-mix(in oklab,#7c9bff,var(--primary) 60%);
+  --secondary:color-mix(in oklab,#70e0ff,var(--secondary) 70%);
+  --accent:color-mix(in oklab,#7cecff,var(--accent) 70%);
+}
+
+/* Document Base */
+html,body{
+  background:var(--bg); color:var(--fg);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans KR,Apple SD Gothic Neo,"맑은 고딕",sans-serif;
+  line-height:1.55; letter-spacing:.1px;
+}
+.container{max-width:1200px;margin-inline:auto;padding-inline:16px}
+.section__title{font-size:var(--fs-xl);margin-bottom:12px}
+.section__lead{color:var(--muted);margin-bottom:8px;font-size:var(--fs-sm)}
+
+/* Skip link */
+.skip-link{position:absolute;left:-9999px;top:-9999px}
+.skip-link:focus{left:12px;top:12px;background:var(--surface);color:var(--fg);
+  padding:8px 12px;border-radius:var(--r-md);box-shadow:0 4px 16px var(--shadow)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 14px;border-radius:var(--r-md);cursor:pointer;
+  border:1px solid color-mix(in oklab,var(--border),transparent 20%);
+  background:color-mix(in oklab,var(--surface),transparent 8%);
+  transition:transform .12s ease,background .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn--primary{background:var(--grad-brand);border:0;color:#fff;box-shadow:0 10px 24px color-mix(in oklab,var(--primary),transparent 75%)}
+.btn--outline{background:transparent;border-color:color-mix(in oklab,var(--primary),transparent 40%);color:var(--primary)}
+.btn--ghost{background:transparent}
+.btn.sm{padding:6px 10px;font-size:var(--fs-sm)}
+.btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:var(--r-md)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg),var(--surface) 22%);
+  border-bottom:1px solid color-mix(in oklab,var(--border),transparent 30%);backdrop-filter:saturate(1.2) blur(8px)}
+.site-header.is-scrolled{box-shadow:0 10px 22px var(--shadow)}
+.header__inner{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:16px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+.brand__logo{width:28px;height:28px}
+.brand__text{letter-spacing:.3px}
+.nav__list{display:flex;gap:4px}
+.nav__item{position:relative}
+.nav__link{position:relative;padding:10px 12px;border-radius:var(--r-md);color:var(--muted);
+  transition:color .18s ease,background .18s ease,transform .12s ease}
+.nav__link::after{content:"";position:absolute;left:12px;right:calc(100% - 12px);bottom:6px;height:2px;
+  background:linear-gradient(90deg,var(--secondary),var(--primary));border-radius:2px;transition:right .22s ease,opacity .22s ease;opacity:0}
+.nav__link:hover{color:var(--fg);background:color-mix(in oklab,var(--surface),transparent 80%);transform:translateY(-1px)}
+.nav__link:hover::after{right:12px;opacity:.9}
+.has-flyout{--flyout-w:220px}
+.menu-flyout{position:absolute;inset:calc(100% + 8px) auto auto 0;width:var(--flyout-w);
+  background:color-mix(in oklab,var(--bg),var(--surface) 24%);border:1px solid color-mix(in oklab,var(--border),transparent 20%);
+  border-radius:var(--r-xl);box-shadow:0 16px 44px var(--shadow);transform-origin:top;transform:scaleY(.86);opacity:0;pointer-events:none;
+  transition:transform .18s ease,opacity .18s ease}
+.menu-flyout__link{display:block;padding:10px 12px;color:var(--muted);border-bottom:1px solid color-mix(in oklab,var(--border),transparent 86%)}
+.menu-flyout__link:hover{color:var(--fg);background:color-mix(in oklab,var(--surface),transparent 80%)}
+.menu-flyout__link:last-child{border-bottom:none}
+.has-flyout:hover>.menu-flyout,.has-flyout:focus-within>.menu-flyout{transform:scaleY(1);opacity:1;pointer-events:auto}
+
+/* Mobile Nav */
+.nav__toggle{display:none;flex-direction:column;gap:4px;padding:8px}
+.nav__bar{width:20px;height:2px;background:var(--fg);opacity:.7}
+.nav-mobile{border-top:1px solid var(--border);background:color-mix(in oklab,var(--bg),var(--surface) 18%)}
+.nav-mobile__list{display:grid;gap:6px;padding:10px 16px}
+.nav-mobile__link{padding:12px;border-radius:var(--r-md);color:var(--muted)}
+.nav-mobile__link:hover{background:color-mix(in oklab,var(--surface),transparent 12%);color:var(--fg)}
+
+/* Side Rails */
+.side-rail{position:fixed;top:96px;z-index:90;display:none}
+.side-rail--left{left:20px;width:84px}
+.side-rail--right{right:20px;width:300px;max-height:70vh;overflow:auto;padding:10px;border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface);box-shadow:0 10px 30px var(--shadow)}
+.side-rail__pill{display:block;margin-bottom:10px;padding:10px 12px;text-align:center;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--fg)}
+.side-rail__pill:hover{background:color-mix(in oklab,var(--surface),transparent 12%)}
+.side-thumb{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:12px;padding:10px;border-radius:var(--r-xl);border:1px solid var(--border);background:var(--surface);transition:transform .15s ease,box-shadow .15s ease}
+.side-thumb+.side-thumb{margin-top:10px}
+.side-thumb:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--shadow)}
+.side-thumb img{width:72px;height:72px;border-radius:var(--r-md);object-fit:cover}
+@media (min-width:1200px){.side-rail{display:block}}
+
+/* Hero */
+.hero{padding-block:36px 24px;border-bottom:1px solid color-mix(in oklab,var(--border),transparent 40%);background:var(--surface);text-align:center}
+.hero__title{font-size:var(--fs-2xl);font-weight:800;letter-spacing:-.015em}
+.hero__lead{margin-top:6px;color:var(--muted)}
+.hero-prompt{display:grid;grid-template-columns:1fr auto;gap:8px;margin:14px auto 8px;max-width:720px}
+.hero-prompt__input{background:var(--surface)}
+.hero__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);overflow:clip;transform:translateZ(0);transition:box-shadow .2s ease,transform .15s ease}
+.card:hover{box-shadow:0 18px 40px var(--shadow);transform:translateY(-2px)}
+.card__img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.card__body{padding:12px;display:grid;gap:6px}
+.card__title{font-size:1.05rem}.card__text{color:var(--muted)}
+.hero__down{margin-top:14px}
+
+/* Scrolly */
+.scrolly{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:start;margin:40px auto}
+.scrolly__img{width:100%;border-radius:var(--r-xl);box-shadow:0 12px 28px var(--shadow)}
+.scrolly__caption{margin-top:10px;font-size:.95rem;color:var(--muted)}
+.scrolly__rail{max-height:72vh;overflow:auto;padding-right:8px;padding-left:12px;border-left:1px solid color-mix(in oklab,var(--border),transparent 30%)}
+.scrolly__thumb{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:10px;margin-bottom:10px;border-radius:var(--r-xl);background:var(--surface);border:1px solid var(--border);transition:transform .15s ease,background .2s ease,border-color .2s ease}
+.scrolly__thumb:hover{transform:translateY(-2px);background:color-mix(in oklab,var(--surface),transparent 6%);border-color:color-mix(in oklab,var(--border),transparent 6%)}
+.scrolly__thumb img{width:72px;height:72px;object-fit:cover;border-radius:var(--r-md)}
+.scrolly__thumb-title{font-weight:600}
+@media (min-width:1200px){.scrolly__rail{display:none}}
+
+/* Main Split */
+.main-split{display:grid;grid-template-columns:220px 1fr;gap:24px;margin:24px auto 48px}
+.toc{position:sticky;top:calc(64px + 18px);align-self:start}
+.toc__title{font-size:1.05rem;margin-bottom:8px}
+.toc__list{display:grid;gap:6px}
+.toc__list a{display:block;padding:8px 10px;border-radius:var(--r-md);color:var(--muted)}
+.toc__list a:hover{background:color-mix(in oklab,var(--surface),transparent 12%);color:var(--fg)}
+
+/* Prompt */
+.prompt{display:grid;gap:12px}
+.prompt__row{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:10px}
+.prompt__label{color:var(--muted)}
+.input{width:100%;padding:10px 12px;border-radius:var(--r-md);border:1px solid color-mix(in oklab,var(--border),transparent 30%);background:var(--surface);color:var(--fg)}
+.input:focus{outline:2px solid var(--focus);outline-offset:2px}
+.prompt__actions{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.suggests{display:flex;flex-wrap:wrap;gap:8px}
+.prompt__btns{display:flex;gap:8px}
+.output{width:100%;min-height:160px;padding:12px;border-radius:var(--r-xl);white-space:pre-wrap;background:var(--surface);border:1px solid color-mix(in oklab,var(--border),transparent 26%)}
+
+/* Pricing */
+.pricing__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{border:1px solid var(--border);border-radius:var(--r-xl);padding:14px;background:var(--surface);display:grid;gap:8px;position:relative}
+.price-card__title{font-size:1.05rem}
+.price-card__price{font-size:1.8rem;font-weight:800}
+/* 링크 클릭 방해 방지 */
+.pressable{position:relative;overflow:hidden}
+.pressable::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at var(--rx,50%) var(--ry,50%),color-mix(in oklab,var(--accent),transparent 70%),transparent 40%);
+  opacity:0;transition:opacity .2s ease}
+.pressable.is-hover::after{opacity:.3}
+.pressable.is-pressed{transform:translateY(1px) scale(.995)}
+.tilt{transform-style:preserve-3d;will-change:transform;transition:transform .15s ease}
+.tilt:hover{transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg)) translate3d(var(--px,0px),var(--py,0px),0)}
+
+/* Footer */
+.site-footer{border-top:1px solid color-mix(in oklab,var(--border),transparent 40%);margin-top:40px}
+.footer__grid{display:grid;grid-template-columns:1fr auto;gap:24px;padding-block:18px}
+.footer__nav{display:flex;gap:18px}
+.footer__title{font-size:.95rem;margin-bottom:8px}
+.footer__text{color:var(--muted);margin-top:8px}
+
+/* Login & Cookie */
+.login::backdrop{background:rgba(0,0,0,.5)}
+.login{border:none;padding:0;border-radius:var(--r-xl);width:min(420px,92vw)}
+.login__form{display:grid;gap:12px;padding:16px;background:var(--bg);color:var(--fg);border:1px solid color-mix(in oklab,var(--border),transparent 30%);border-radius:var(--r-xl)}
+.login__header{display:flex;align-items:center;justify-content:space-between}
+.login__title{font-size:1.2rem}
+.input__group{display:grid;gap:6px}
+.input__label{font-size:.95rem;color:var(--muted)}
+.check{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.login__error{min-height:20px;color:#ef4444}
+.login__actions{display:flex;justify-content:flex-end}
+.user-badge{position:fixed;left:12px;bottom:12px;z-index:1000;padding:8px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--border);box-shadow:0 6px 18px var(--shadow);font-size:14px;pointer-events:none}
+.cookie-banner{position:fixed;inset:auto 0 0 0;z-index:2000;background:var(--surface);border-top:1px solid var(--border)}
+.cookie-banner__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;max-width:1200px;margin:0 auto}
+.cookie-banner__text{margin:0;color:var(--muted)}
+.cookie-banner__link{text-decoration:underline}
+
+/* Responsive */
+@media (max-width:1000px){
+  .hero__grid{grid-template-columns:1fr}
+  .main-split{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr}
+  .nav{display:none}.nav__toggle{display:inline-flex}
+}
+
+/* Accessibility */
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:var(--r-md)}
+[popover]{border:1px solid var(--border);border-radius:var(--r-xl);padding:10px 12px;background:color-mix(in oklab,var(--bg),var(--surface) 20%);
+  box-shadow:0 20px 40px var(--shadow);max-width:min(320px,90vw);font-size:.95rem}
+
+/* Background Highlights */
+body{
+  background-image:
+    radial-gradient(1200px 600px at 20% -10%,color-mix(in oklab,var(--accent),transparent 92%),transparent 70%),
+    radial-gradient(900px 500px at 120% 10%,color-mix(in oklab,var(--primary),transparent 94%),transparent 70%);
+  background-attachment:fixed;
+}
+
+/* Motion Preferences */
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+
+/* ============================
+   NAV REFINEMENT — remove bullets, improve spacing, optional dividers
+   ============================ */
+/* 1) Remove default list bullets only where we use nav/feature lists */
+.nav__list,
+.nav-mobile__list,
+.updates__list,
+.price-card__features { list-style: none; }
+
+/* 2) Extra breathing room so text never collides with separators/edges */
+.nav__list { gap: 10px; }             /* was 4px → 10px */
+.nav__link { padding: 10px 14px; }    /* subtle widen */
+
+/* 3) Optional vertical dividers like Big Tech sites (not enabled by default)
+   To enable: <nav class="nav nav--divided"> ... </nav>
+*/
+.nav--divided .nav__item + .nav__item { position: relative; margin-left: 14px; }
+.nav--divided .nav__item + .nav__item::before {
+  content:""; position:absolute; left:-7px; top:50%; transform:translateY(-50%);
+  width:1px; height:14px; background: color-mix(in oklab,var(--border),transparent 15%);
+}
+
+/* 4) High-contrast hover and focus ring tuned for readability */
+.nav__link:hover{ color:var(--fg); background:color-mix(in oklab,var(--surface),transparent 75%); }
+.nav__link:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; border-radius: var(--r-md); }
+
+
+/* --- Dark-mode fixes: ensure all surfaces and media look coherent --- */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .price-card,
+html[data-theme="dark"] .side-rail--right,
+html[data-theme="dark"] .side-rail__pill,
+html[data-theme="dark"] .scrolly__thumb,
+html[data-theme="dark"] .input,
+html[data-theme="dark"] .output,
+html[data-theme="dark"] .cookie-banner,
+html[data-theme="dark"] .user-badge,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .hero-prompt__input {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+/* SVG/flat illustrations: slightly dim & balance for dark */
+html[data-theme="dark"] img[src$=".svg"] {
+  filter: brightness(.94) saturate(.95) contrast(1.03);
+}
+
+/* General media subtle lift on dark to avoid washed-out look */
+html[data-theme="dark"] .card__img,
+html[data-theme="dark"] .scrolly__img,
+html[data-theme="dark"] .side-thumb img {
+  filter: brightness(.98) contrast(1.02);
+}
+
+/* Hover states tuned for dark */
+html[data-theme="dark"] .nav-mobile__link:hover,
+html[data-theme="dark"] .toc__list a:hover,
+html[data-theme="dark"] .scrolly__thumb:hover {
+  background: color-mix(in oklab,var(--surface),transparent 85%);
+  color: var(--fg);
+}

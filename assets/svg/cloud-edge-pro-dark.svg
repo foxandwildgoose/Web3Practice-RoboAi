@@ -1,0 +1,27 @@
+<!-- dark-variant -->
+<svg data-variant="dark" xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d28d9"/>
+      <stop offset=".55" stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#94a3b8" flood-opacity=".25"/></filter>
+  </defs>
+
+<rect width="1400" height="800" fill="none"/>
+<g transform="translate(160,220)">
+  <ellipse cx="220" cy="140" rx="170" ry="110" fill="#f8fafc" stroke="#e2e8f0"/>
+  <ellipse cx="320" cy="120" rx="130" ry="80" fill="#f8fafc" stroke="#e2e8f0"/>
+  <ellipse cx="120" cy="160" rx="120" ry="70" fill="#f8fafc" stroke="#e2e8f0"/>
+</g>
+<g transform="translate(720,200)">
+  <rect x="0" y="0" width="520" height="340" rx="18" fill="#f8fafc" stroke="#e2e8f0"/>
+  <rect x="40" y="40" width="160" height="110" rx="10" fill="none" stroke="#e2e8f0"/>
+  <rect x="40" y="170" width="160" height="110" rx="10" fill="none" stroke="#e2e8f0"/>
+  <rect x="230" y="90" width="230" height="180" rx="12" fill="url(#g)" opacity=".9"/>
+</g>
+<path d="M520,340 C640,320 680,320 720,320" stroke="url(#g)" stroke-width="8" fill="none"/>
+<path d="M520,400 C640,420 680,420 720,420" stroke="url(#g)" stroke-width="8" fill="none"/>
+</svg>
